@@ -17,16 +17,17 @@
       "reactify"
     ]
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "dependencies": {
-    "react": "~0.12.2",
-    "node-jsx": "~0.12.4",
+    "es6-promise": "^2.0.1",
     "express": "~4.11.1",
+    "flux": "^2.0.1",
     "jade": "~1.9.1",
-    "reactify": "~1.0.0",
-    "react-router": "~0.11.6",
     "merge": "~1.2.0",
+    "node-jsx": "~0.12.4",
+    "react": "~0.12.2",
+    "react-router": "~0.11.6",
+    "reactify": "~1.0.0",
     "showdown": "~0.3.1"
   }
 }

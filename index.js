@@ -23,30 +23,30 @@ app.get('/', function (req, res) {
       content: content,
       injectedScript: JSON.stringify(injected)
     });
-    res.end();
+    //res.end();
   });
+
+  //return res.end();
 })
 
 app.get('/test', function (req, res, next) {
-  Router.run(routes, '/test', function (Handler) {
-    var content = React.renderToString(React.createElement(Handler));
-    res.render('index', {content: content});
-    res.end();
-  });
+    res.send("bello");
+    //res.end();
 });
 
 app.get('/article/:id', function (req, res, next) {
   var aid = req.params.id;
   Router.run(routes, '/article/' + aid , function (Handler) {
     var content = React.renderToString(React.createElement(Handler));
-    var injected = {};
-    injected[aid] = Api.getArticle(aid);
+    var injected = { list: [Api.getArticle(aid)]};
     res.render('index', {
       content: content,
       injectedScript: JSON.stringify(injected)
     });
-    res.end();
+    //res.end();
   });
+
+  //return true;
 });
 
 // Start server

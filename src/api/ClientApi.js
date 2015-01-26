@@ -1,15 +1,31 @@
 function getInjectedData(key) {
   var inj = window.__INJECTED[key];
   return inj;
-  
+
 };
+
+var _data = getInjectedData("list") || [];
 
 module.exports = {
   getArticles: function () {
-    return getInjectedData("list") || [];
+    return _data;
   },
-  
+
   getArticle: function (id) {
-    return getInjectedData(id) || "";
+    console.log(_data);
+    var article;
+    _data.forEach(function (d) {
+      if (d.id == id) {
+        article = d;
+      }
+    });
+
+    return article || {id: "", content: ""};
+  },
+
+  setArticle: function (article, index) {
+
+    _data[index] = article;
+    return true;
   }
 };

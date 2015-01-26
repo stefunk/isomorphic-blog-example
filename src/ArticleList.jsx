@@ -8,17 +8,17 @@ var ArticleList = React.createClass({
       articles: ArticleStore.getData()
     };
   },
-  
+
   render: function () {
-    console.log(this.props);
+    console.log(this.state);
     var articles = this.state.articles;
     return (
       <div>
         <h1>{"Articles"}</h1>
         <ul>
-          { 
+          {
             articles.map(function (art) {
-              return (<li><Link to="article" params={{id: art}}>{art}</Link></li>)
+              return (<li><Link to="article" params={{id: art.id}}>{art.id}</Link></li>)
             })
           }
         </ul>

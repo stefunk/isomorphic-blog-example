@@ -12,7 +12,7 @@ var routes = (
   <Route name="app" path="/" handler={App}>
     <Route name="test" handler={Item}/>
     <Route name="article" path="/article/:id" handler={Article}/>
-    <DefaultRoute handler={ArticleList}/>
+    <DefaultRoute name="default" handler={ArticleList}/>
   </Route>
 );
 

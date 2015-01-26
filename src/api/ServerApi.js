@@ -5,10 +5,25 @@ var FILES_DIR = basedir + '/articles';
 
 module.exports = {
   getArticles: function () {
-    return fs.readdirSync(FILES_DIR);
+    var articles = fs.readdirSync(FILES_DIR),
+      list = [];
+
+    articles.forEach( function (a) {
+      list.push({
+        id: a,
+        content: ""
+      });
+    });
+    console.log(list);
+    return list;
   },
-  
+
   getArticle: function (id) {
-    return fs.readFileSync(FILES_DIR + '/' + id, {encoding: 'utf8'});
+    var article = fs.readFileSync(FILES_DIR + '/' + id, {encoding: 'utf8'});
+
+    return {
+      id: id,
+      content: article
+    };
   }
 };
