@@ -1,0 +1,32 @@
+{
+  "name": "iso-blog",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Stefano Grassi",
+  "license": "ISC",
+  "browser": {
+    "./src/api/ServerApi.js": "./src/api/ClientApi.js",
+    "showdown": "./vendor/showdown/showdown.js"
+  },
+  "browserify": {
+    "transform": [
+      "reactify"
+    ]
+  },
+  "devDependencies": {
+  },
+  "dependencies": {
+    "react": "~0.12.2",
+    "node-jsx": "~0.12.4",
+    "express": "~4.11.1",
+    "jade": "~1.9.1",
+    "reactify": "~1.0.0",
+    "react-router": "~0.11.6",
+    "merge": "~1.2.0",
+    "showdown": "~0.3.1"
+  }
+}

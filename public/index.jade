@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title my jade template
+    link(rel="stylesheet", href="/public/css/base.css")
+  body(id="rap")
+    !{content} 
+    script.
+      __INJECTED = !{injectedScript}
+    script(src="/public/build.js")
+    
+    

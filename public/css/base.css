@@ -1,0 +1,58 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,400);
+@import url(http://fonts.googleapis.com/css?family=Merriweather:400italic);
+
+/* UTILS */
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/* GLOBALS */
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+html, body {
+  overflow: auto;
+}
+/* STYLES */
+
+header, .content {
+  margin: 0 auto;
+  width: 1024px;
+}
+
+header {
+  border-bottom: 1px solid #eee;
+}
+
+header h1 {
+  color: #333;
+  font-family: 'Merryweather', serif;
+  font-style: italic;
+  font-weight: 400;
+  display: inline-block;
+  float: left;
+  margin: 0;
+}
+
+header nav {
+  display: inline-block;
+  float: right;
+}
+
+header ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+header ul li {
+  display: inline-block;
+}
