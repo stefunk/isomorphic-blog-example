@@ -4,18 +4,22 @@ var merge = require('merge');
 var Api = require('../api/ServerApi.js');
 var AppDispatcher = require('../dispatcher/Dispatcher');
 
-var _data = Api.getArticles();
+var _data = window._d = Api.getArticles();
 
 function loadData(data) {
   _data = data;
 };
 
 function loadArticle(article) {
+  var exist = false;
   _data.forEach(function (art, index) {
     if (art.id == article.id) {
       Api.setArticle(article, index);
-    } else {}
+      exist = true;
+    }
   });
+
+  if(!exist) _data.push(article);
 };
 
 var CHANGE_EVENT = "change";
@@ -63,4 +67,4 @@ AppDispatcher.register(function (action) {
   }
 });
 
-module.exports = ArticleStore;
+module.exports = window.a = ArticleStore;

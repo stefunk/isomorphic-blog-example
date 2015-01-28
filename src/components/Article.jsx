@@ -18,7 +18,7 @@ module.exports = React.createClass({
     };
   },
 
-  componentDidMount: function () {
+  componentWillMount: function () {
     ArticleStore.addChangeListener(this._change);
   },
 
@@ -35,8 +35,11 @@ module.exports = React.createClass({
 
   _change: function () {
     if (!this.isMounted()) return false;
+
+    var articleId = this.getParams().id;
     this.setState({
-      article: ArticleStore.findById(this.state.articleId)
+      article: ArticleStore.findById(articleId),
+      articleId: articleId
     });
   }
 });

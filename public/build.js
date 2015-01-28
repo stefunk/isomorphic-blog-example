@@ -23509,7 +23509,7 @@ module.exports = React.createClass({displayName: "exports",
     };
   },
 
-  componentDidMount: function () {
+  componentWillMount: function () {
     ArticleStore.addChangeListener(this._change);
   },
 
@@ -23526,8 +23526,11 @@ module.exports = React.createClass({displayName: "exports",
 
   _change: function () {
     if (!this.isMounted()) return false;
+
+    var articleId = this.getParams().id;
     this.setState({
-      article: ArticleStore.findById(this.state.articleId)
+      article: ArticleStore.findById(articleId),
+      articleId: articleId
     });
   }
 });
@@ -23545,6 +23548,10 @@ var ArticleList = React.createClass({displayName: "ArticleList",
     };
   },
 
+  componentWillMount: function () {
+    ArticleStore.addChangeListener(this._change);
+  },
+
   render: function () {
     var articles = this.state.articles;
     return (
@@ -23559,6 +23566,13 @@ var ArticleList = React.createClass({displayName: "ArticleList",
         )
       )
     );
+  },
+
+  _change: function () {
+    if (!this.isMounted()) return false;
+    this.setState({
+      articles: ArticleStore.getData()
+    });
   }
 });
 
@@ -23600,18 +23614,22 @@ var merge = require('merge');
 var Api = require('../api/ServerApi.js');
 var AppDispatcher = require('../dispatcher/Dispatcher');
 
-var _data = Api.getArticles();
+var _data = window._d = Api.getArticles();
 
 function loadData(data) {
   _data = data;
 };
 
 function loadArticle(article) {
+  var exist = false;
   _data.forEach(function (art, index) {
     if (art.id == article.id) {
       Api.setArticle(article, index);
-    } else {}
+      exist = true;
+    }
   });
+
+  if(!exist) _data.push(article);
 };
 
 var CHANGE_EVENT = "change";
@@ -23659,7 +23677,7 @@ AppDispatcher.register(function (action) {
   }
 });
 
-module.exports = ArticleStore;
+module.exports = window.a = ArticleStore;
 
 
 },{"../api/ServerApi.js":198,"../dispatcher/Dispatcher":203,"events":213,"merge":5}],206:[function(require,module,exports){

@@ -9,6 +9,10 @@ var ArticleList = React.createClass({
     };
   },
 
+  componentWillMount: function () {
+    ArticleStore.addChangeListener(this._change);
+  },
+
   render: function () {
     var articles = this.state.articles;
     return (
@@ -23,6 +27,13 @@ var ArticleList = React.createClass({
         </ul>
       </div>
     );
+  },
+
+  _change: function () {
+    if (!this.isMounted()) return false;
+    this.setState({
+      articles: ArticleStore.getData()
+    });
   }
 });
 
