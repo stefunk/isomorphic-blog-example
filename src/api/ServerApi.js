@@ -10,16 +10,15 @@ module.exports = {
 
     articles.forEach( function (a) {
       list.push({
-        id: a,
+        id: a.replace(".md", ""),
         content: ""
       });
     });
-    console.log(list);
     return list;
   },
 
   getArticle: function (id) {
-    var article = fs.readFileSync(FILES_DIR + '/' + id, {encoding: 'utf8'});
+    var article = fs.readFileSync(FILES_DIR + '/' + id + ".md", {encoding: 'utf8'});
 
     return {
       id: id,

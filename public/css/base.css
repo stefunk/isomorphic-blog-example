@@ -15,7 +15,7 @@
 /* GLOBALS */
 
 * {
-  font-family: 'Roboto', sans-serif;
+  font-family: Helvetica, sans-serif;
 }
 
 html, body {
@@ -34,7 +34,7 @@ header {
 
 header h1 {
   color: #333;
-  font-family: 'Merryweather', serif;
+  font-family: 'Garamond', serif;
   font-style: italic;
   font-weight: 400;
   display: inline-block;
@@ -55,4 +55,8 @@ header ul {
 
 header ul li {
   display: inline-block;
+}
+
+.content ul {
+  padding-left: 15px !important;
 }

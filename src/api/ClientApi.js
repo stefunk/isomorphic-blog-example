@@ -12,7 +12,6 @@ module.exports = {
   },
 
   getArticle: function (id) {
-    console.log(_data);
     var article;
     _data.forEach(function (d) {
       if (d.id == id) {

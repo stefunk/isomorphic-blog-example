@@ -1,20 +1,24 @@
 var AppDispatcher = require('../dispatcher/Dispatcher');
+var PromiseApi = require('../utils/ClientPromiseApi');
 
 module.exports = {
   fetchArticle: function (id) {
-    AppDispatcher.dispatch({
-      actionType: "ARTICLE_FETCHED",
-      data: {
-        id: id,
-        content: "# PORCODIO"
-      }
-    });
+    var promise = PromiseApi.fetchArticleById(id)
+      .then(function (data) {
+        AppDispatcher.dispatch({
+          actionType: "ARTICLE_FETCHED",
+          data: data
+        });
+      });
   },
 
   fetchArticleList: function () {
-    AppDispatcher.dispatch({
-      actionType: "LIST_FETCHED",
-      data: [{id: "first_article.md", content: ""}, {id: "second_article.md", content: ""}]
-    });
+    var promise = PromiseApi.fetchArticles()
+      .then(function (data) {
+        AppDispatcher.dispatch({
+          actionType: "LIST_FETCHED",
+          data: data
+        });
+      });
   }
 };
