@@ -4,7 +4,7 @@ var merge = require('merge');
 var Api = require('../api/ServerApi.js');
 var AppDispatcher = require('../dispatcher/Dispatcher');
 
-var _data = window._d = Api.getArticles();
+var _data = Api.getArticles();
 
 function loadData(data) {
   _data = data;
@@ -67,4 +67,4 @@ AppDispatcher.register(function (action) {
   }
 });
 
-module.exports = window.a = ArticleStore;
+module.exports = ArticleStore;
